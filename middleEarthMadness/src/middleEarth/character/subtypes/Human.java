@@ -1,5 +1,7 @@
 package middleEarth.character.subtypes;
 
-public class Human {
+import middleEarth.character.MiddleEarthCharacter;
+
+public class Human extends MiddleEarthCharacter{
 
 }

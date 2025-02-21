@@ -1,5 +1,7 @@
 package middleEarth.character.subtypes;
 
-public class Elf {
+import middleEarth.character.MiddleEarthCharacter;
+
+public class Elf extends MiddleEarthCharacter{
 
 }

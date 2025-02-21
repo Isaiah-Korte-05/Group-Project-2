@@ -1,5 +1,7 @@
 package middleEarth.character.subtypes;
 
-public class Wizard {
+import middleEarth.character.MiddleEarthCharacter;
+
+public class Wizard extends MiddleEarthCharacter{
 
 }

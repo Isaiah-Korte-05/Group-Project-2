@@ -1,5 +1,7 @@
 package middleEarth.character.subtypes;
 
-public class Orc {
+import middleEarth.character.MiddleEarthCharacter;
+
+public class Orc extends MiddleEarthCharacter{
 
 }
