@@ -1,6 +1,6 @@
 package middleEarth.council;
 
-import middleEarth.character.characterManager.CharacterManager;
+//import middleEarth.character.characterManager.CharacterManager;
 
 public class MiddleEarthCouncil {
 	
