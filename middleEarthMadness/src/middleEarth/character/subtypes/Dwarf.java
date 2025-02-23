@@ -10,8 +10,18 @@ public class Dwarf extends MiddleEarthCharacter{
 
 	@Override
 	protected boolean attack(MiddleEarthCharacter target) {
-		// TODO Auto-generated method stub
-		return false;
+		if (target.getClass().getSimpleName() == "Elf") {
+			target.setHealth(target.getHealth() - (this.power * 1.5));
+			return true;
+		}
+		else if (target.getClass().getSimpleName() == "Wizard" ||
+				target.getClass().getSimpleName() == "Dwarf") {
+			return false;
+		}
+		else {
+			target.setHealth(target.getHealth() - this.power);
+			return true;
+		}
 	}
 
 	@Override

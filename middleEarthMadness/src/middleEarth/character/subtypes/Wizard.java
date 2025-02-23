@@ -10,8 +10,18 @@ public class Wizard extends MiddleEarthCharacter{
 
 	@Override
 	protected boolean attack(MiddleEarthCharacter target) {
-		// TODO Auto-generated method stub
-		return false;
+		if (target.getClass().getSimpleName() == "Dwarf") {
+			target.setHealth(target.getHealth() - (this.power * 1.5));
+			return true;
+		}
+		else if (target.getClass().getSimpleName() == "Human" ||
+				target.getClass().getSimpleName() == "Wizard") {
+			return false;
+		}
+		else {
+			target.setHealth(target.getHealth() - this.power);
+			return true;
+		}
 	}
 
 	@Override

@@ -10,8 +10,18 @@ public class Human extends MiddleEarthCharacter{
 
 	@Override
 	protected boolean attack(MiddleEarthCharacter target) {
-		// TODO Auto-generated method stub
-		return false;
+		if (target.getClass().getSimpleName() == "Wizard") {
+			target.setHealth(target.getHealth() - (this.power * 1.5));
+			return true;
+		}
+		else if (target.getClass().getSimpleName() == "Orc" ||
+				target.getClass().getSimpleName() == "Human") {
+			return false;
+		}
+		else {
+			target.setHealth(target.getHealth() - this.power);
+			return true;
+		}
 	}
 
 	@Override
