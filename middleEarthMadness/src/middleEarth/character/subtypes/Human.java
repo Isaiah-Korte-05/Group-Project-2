@@ -16,8 +16,7 @@ public class Human extends MiddleEarthCharacter{
 
 	@Override
 	protected String getRace() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.getClass().getSimpleName();
 	}
 
 }
