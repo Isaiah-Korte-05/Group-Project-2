@@ -1,10 +1,12 @@
 package middleEarth.council;
 
-//import middleEarth.character.characterManager.CharacterManager;
+import middleEarth.character.characterManager.CharacterManager;
 
 public class MiddleEarthCouncil {
 	
 	private static MiddleEarthCouncil instance;
+	
+	private CharacterManager manager;
 	
 	private MiddleEarthCouncil() {}
 
@@ -15,7 +17,8 @@ public class MiddleEarthCouncil {
 		return instance;
 	}
 	
-//	private CharacterManager getCharacterManager() {
-//		
-//	}
+	// TODO idk if this is right (?)
+	public CharacterManager getCharacterManager() {
+		return manager;
+	}
 }
