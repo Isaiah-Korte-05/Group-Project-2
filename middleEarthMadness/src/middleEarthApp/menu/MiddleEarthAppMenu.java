@@ -5,7 +5,7 @@ import middleEarth.character.subtypes.*;
 
 public class MiddleEarthAppMenu {
 
-	public void printOptions() {
+	public static void printOptions() {
 		System.out.println("Please select which option you would like to take:\n");
 		System.out.println("[1] Add a new character.");
 		System.out.println("[2] View all characters.");
@@ -13,9 +13,10 @@ public class MiddleEarthAppMenu {
 		System.out.println("[4] Delete a character.");
 		System.out.println("[5] Execute all characters' attack actions.");
 		System.out.println("[6] Exit.");
+		System.out.println();
 	}
 	
-	public void addNewChar(String race, String name, long health, long power) {
+	public static void addNewChar(String race, String name, long health, long power) {
 		
 		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 			
@@ -55,14 +56,15 @@ public class MiddleEarthAppMenu {
 			
 	}
 	
-	public void viewCharacters() {
+	public static void viewCharacters() {
 		
 		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 		council.getCharacterManager().displayAllCharacters();
+		System.out.println();
 	
 	}
 	
-	public void updateChar(String name, double health, double power) {
+	public static void updateChar(String name, double health, double power) {
 			
 		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 					
@@ -77,7 +79,7 @@ public class MiddleEarthAppMenu {
 
 	}
 	
-	public void deleteChar(String name) {
+	public static void deleteChar(String name) {
 		
 		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 		
@@ -92,7 +94,7 @@ public class MiddleEarthAppMenu {
 		
 	}
 	
-	public void attackChar() {
+	public static void attackChar() {
 		
 		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 		
@@ -101,9 +103,7 @@ public class MiddleEarthAppMenu {
 		for(int i = 0; i < council.getCharacterManager().size; i++) {
 			for(int j = 0; j < council.getCharacterManager().size; j++) {
 				
-				if(!council.getCharacterManager().characters[i].attack(council.getCharacterManager().characters[j])) {
-					
-				}
+				council.getCharacterManager().characters[i].attack(council.getCharacterManager().characters[j]);
 				if(council.getCharacterManager().characters[j].getHealth() <= 0) {
 					
 					System.out.println(council.getCharacterManager().characters[j].getName() + " was killed by " + 
@@ -120,4 +120,7 @@ public class MiddleEarthAppMenu {
 		
 	}
 	
+	public static void exit() {
+		System.out.println("Exiting simulation...");
+	}
 }
