@@ -11,7 +11,7 @@ public class CharacterManager {
 		this.characters = new MiddleEarthCharacter[4];
 	}
 	
-	//TODO how to do tests for returns?
+	//TODO how to test success
 	public boolean addCharacter(MiddleEarthCharacter c) {
 		
 		if(size == (characters.length - 1)) {
@@ -60,12 +60,12 @@ public class CharacterManager {
 		return false;
 	}
 	
-	// TODO fix deleteCharacter
+	// TODO how to test success
 	public boolean deleteCharacter(MiddleEarthCharacter character) {
 		
 		for (int i = 0; i < size; i++) {
 			if (characters[i] == character) {
-				for(int j = i-1; characters[j] != null; j++) {
+				for(int j = i; characters[j] != null; j++) {
 					characters[j] = characters[j + 1];
 				}
 				size--;
