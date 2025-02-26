@@ -4,8 +4,8 @@ import middleEarth.character.MiddleEarthCharacter;
 
 public class CharacterManager {
 
-	private MiddleEarthCharacter[] characters;
-	private int size;
+	public MiddleEarthCharacter[] characters;
+	public int size = 0;
 	
 	//TODO how to do tests for returns?
 	public boolean addCharacter(MiddleEarthCharacter c) {
@@ -72,7 +72,6 @@ public class CharacterManager {
 	
 	public void displayAllCharacters() {
 		for (int i = 0; i < size; i++) {
-			System.out.print("[" + i + "]");
 			characters[i].displayInfo();
 		}
 	}
