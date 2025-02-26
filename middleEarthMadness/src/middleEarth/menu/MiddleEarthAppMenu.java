@@ -1,208 +1,122 @@
 package middleEarth.menu;
 
-import java.util.Scanner;
-
 import middleEarth.council.MiddleEarthCouncil;
-
 import middleEarth.character.subtypes.*;
 
 public class MiddleEarthAppMenu {
 
-	private static void printOptions() {
-		System.out.println("Please select which option you would like to take:");
+	public void printOptions() {
+		System.out.println("Please select which option you would like to take:\n");
 		System.out.println("[1] Add a new character.");
 		System.out.println("[2] View all characters.");
 		System.out.println("[3] Update a character.");
 		System.out.println("[4] Delete a character.");
 		System.out.println("[5] Execute all characters' attack actions.");
 		System.out.println("[6] Exit.");
-		
 	}
 	
-	private static void addNewChar(MiddleEarthCouncil council) {
+	public void addNewChar(String race, String name, long health, long power) {
 		
-		try (Scanner scanner = new Scanner(System.in)) {
+		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 			
-			String name;
-			String race;
-			double health;
-			double power;
+		System.out.println("Creating and adding new character...");
+		boolean addSuccess = false;
 			
-			System.out.println("Please enter new character name:");
-			name = scanner.nextLine();
+		switch(race.toLowerCase()) {
 			
-			System.out.println("Please enter new character health:");
-			health = scanner.nextDouble();
-			scanner.nextLine();
-			
-			System.out.println("Please enter new character power:");
-			power = scanner.nextDouble();
-			scanner.nextLine();
-			
-			System.out.println("Please enter new character race:");
-			race = scanner.nextLine();
-			System.out.println();
-			
-			System.out.println("Creating and adding new character...");
-			boolean addSuccess = false;
-			
-			switch(race.toLowerCase()) {
-			
-			case "dwarf":
-				addSuccess = council.getCharacterManager().addCharacter(new Dwarf(name, health, power));
-				break;
+		case "dwarf":
+			addSuccess = council.getCharacterManager().addCharacter(new Dwarf(name, health, power));
+			break;
 				
-			case "elf":
-				addSuccess = council.getCharacterManager().addCharacter(new Elf(name, health, power));
-				break;
+		case "elf":
+			addSuccess = council.getCharacterManager().addCharacter(new Elf(name, health, power));
+			break;
 				
-			case "human":
-				addSuccess = council.getCharacterManager().addCharacter(new Human(name, health, power));
-				break;
+		case "human":
+			addSuccess = council.getCharacterManager().addCharacter(new Human(name, health, power));
+			break;
 				
-			case "orc":
-				addSuccess = council.getCharacterManager().addCharacter(new Orc(name, health, power));
-				break;
+		case "orc":
+			addSuccess = council.getCharacterManager().addCharacter(new Orc(name, health, power));
+			break;
 				
-			case "wizard":
-				addSuccess = council.getCharacterManager().addCharacter(new Wizard(name, health, power));
-				break;
-			
-			}
-			
-			if(addSuccess) {
-				System.out.println("Character addition successful!\n");
-			}
-			else {
-				System.out.println("Error adding new character.\n");
-			}
+		case "wizard":
+			addSuccess = council.getCharacterManager().addCharacter(new Wizard(name, health, power));
+			break;
 			
 		}
-		
+			
+		if(addSuccess) {
+			System.out.println("Character addition successful!\n");
+		}
+		else {
+			System.out.println("Error adding new character.\n");
+		}
+			
 	}
 	
-	private static void viewCharacters(MiddleEarthCouncil council) {
+	public void viewCharacters() {
+		
+		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 		council.getCharacterManager().displayAllCharacters();
+	
 	}
 	
-	private static void updateChar(MiddleEarthCouncil council) {
-		
-		try (Scanner scanner = new Scanner(System.in)) {
+	public void updateChar(String name, double health, double power) {
 			
-			String character;
-			String name;
-			double health;
-			double power;
+		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
+					
+		System.out.println("Updating character...");
 			
-			boolean update;
-			
-			System.out.println("Select which character to delete:");
-			council.getCharacterManager().displayAllCharacters();
-			System.out.println();
-			
-			character = scanner.nextLine();
-			
-			System.out.println("Please enter updated name:");
-			name = scanner.nextLine();
-			
-			System.out.println("Please enter updated health:");
-			health = scanner.nextFloat();
-			scanner.nextLine();
-			
-			System.out.println("Please enter updated power:");
-			power = scanner.nextFloat();
-			scanner.nextLine();
-			System.out.println();
-			
-			System.out.println("Updating character...");
-			
-			update = council.getCharacterManager().updateCharacter(council.getCharacterManager().getCharacter(character), name, health, power);
-			
-			if(update) {
-				System.out.println("Update successful!\n");
-			}
-			else {
-				System.out.println("Error: no updates made or character not found.\n");
-			}
-			
+		if(council.getCharacterManager().updateCharacter(council.getCharacterManager().getCharacter(name), name, health, power)) {
+			System.out.println("Update successful!\n");
+		}
+		else {
+			System.out.println("Error: no updates made or character not found.\n");
 		}
 
 	}
 	
-	private static void deleteChar(MiddleEarthCouncil council) {
+	public void deleteChar(String name) {
 		
-		try (Scanner scanner = new Scanner(System.in)) {
-			String name;
+		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
+		
+		System.out.println("Deleting character...");
 			
-			System.out.println("Select which character to delete:");
-			council.getCharacterManager().displayAllCharacters();
-			System.out.println();
-			
-			name = scanner.nextLine();
-			System.out.println("Deleting...");
-			
-			if(council.getCharacterManager().deleteCharacter(council.getCharacterManager().getCharacter(name))) {
-				System.out.println("Deletion successful!\n");
-			}
-			else {
-				System.out.println("Error deleting character.\n");
-			}
+		if(council.getCharacterManager().deleteCharacter(council.getCharacterManager().getCharacter(name))) {
+			System.out.println("Deletion successful!\n");
+		}
+		else {
+			System.out.println("Error deleting character.\n");
 		}
 		
 	}
 	
-	private static void attackChar(MiddleEarthCouncil council) {
-		//TODO write attack func
-	}
-	
-	public static void menu() {
+	public void attackChar() {
 		
-		System.out.println("Starting Middle Earth Simulation...");
-		
-		boolean exit = false;
-		int option;
 		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 		
-		try (Scanner scanner = new Scanner(System.in)) {
-			while(!exit) {
+		System.out.println("Starting attack sequence...");
+		
+		for(int i = 0; i < council.getCharacterManager().size; i++) {
+			for(int j = 0; j < council.getCharacterManager().size; j++) {
 				
-				printOptions();
-				option = scanner.nextInt();
-				scanner.nextLine();
-				
-				switch(option) {
-				
-				case 1:
-					addNewChar(council);
-					break;
+				if(!council.getCharacterManager().characters[i].attack(council.getCharacterManager().characters[j])) {
 					
-				case 2:
-					viewCharacters(council);
-					break;
+				}
+				if(council.getCharacterManager().characters[j].getHealth() <= 0) {
 					
-				case 3:
-					updateChar(council);
-					break;
+					System.out.println(council.getCharacterManager().characters[j].getName() + " was killed by " + 
+										council.getCharacterManager().characters[i].getName() + ".");
+					council.getCharacterManager().deleteCharacter(council.getCharacterManager().characters[j]);	
 					
-				case 4:
-					deleteChar(council);
-					break;
-					
-				case 5:
-					attackChar(council);
-					break;
-					
-				case 6:
-					exit = true;
-					break;
-				
 				}
 				
 			}
-			
-			System.out.println("Exiting menu...");
-			
 		}
+		
+		System.out.println("Attack sequence completed. Remaining characters:");
+		council.getCharacterManager().displayAllCharacters();
 		
 	}
 	
