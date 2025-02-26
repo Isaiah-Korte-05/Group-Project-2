@@ -1,4 +1,4 @@
-package middleEarth.menu;
+package middleEarthApp.menu;
 
 import middleEarth.council.MiddleEarthCouncil;
 import middleEarth.character.subtypes.*;
