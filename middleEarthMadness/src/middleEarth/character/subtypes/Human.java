@@ -9,13 +9,12 @@ public class Human extends MiddleEarthCharacter{
 	}
 
 	@Override
-	protected boolean attack(MiddleEarthCharacter target) {
-		if (target.getClass().getSimpleName() == "Wizard") {
+	public boolean attack(MiddleEarthCharacter target) {
+		if (target.getRace() == "Wizard") {
 			target.setHealth(target.getHealth() - (this.power * 1.5));
 			return true;
 		}
-		else if (target.getClass().getSimpleName() == "Orc" ||
-				target.getClass().getSimpleName() == "Human") {
+		else if (target.getRace() == "Orc" || target.getRace() == "Human") {
 			return false;
 		}
 		else {
@@ -25,7 +24,7 @@ public class Human extends MiddleEarthCharacter{
 	}
 
 	@Override
-	protected String getRace() {
+	public String getRace() {
 		return this.getClass().getSimpleName();
 	}
 
