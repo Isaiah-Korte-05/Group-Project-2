@@ -8,7 +8,9 @@ public class MiddleEarthCouncil {
 	
 	private CharacterManager manager;
 	
-	private MiddleEarthCouncil() {}
+	private MiddleEarthCouncil() {
+		this.manager = new CharacterManager();
+	}
 
 	public static MiddleEarthCouncil getInstance() {
 		if (instance == null) {
@@ -17,7 +19,6 @@ public class MiddleEarthCouncil {
 		return instance;
 	}
 	
-	// TODO idk if this is right (?)
 	public CharacterManager getCharacterManager() {
 		return manager;
 	}
