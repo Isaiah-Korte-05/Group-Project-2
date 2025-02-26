@@ -12,9 +12,9 @@ public abstract class MiddleEarthCharacter {
 		this.power = power;
 	}
 	
-	protected abstract boolean attack(MiddleEarthCharacter target);
+	public abstract boolean attack(MiddleEarthCharacter target);
 	
-	protected abstract String getRace();
+	public abstract String getRace();
 	
 	public void displayInfo() {
 		System.out.println("Name: " + name + ", Health: " + health + ", Power: " + power);
