@@ -20,7 +20,7 @@ public class MiddleEarthAppMenu {
 		
 		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 			
-		System.out.println("Creating and adding new character...");
+		System.out.println("Adding new character...");
 		boolean addSuccess = false;
 			
 		switch(race.toLowerCase()) {
@@ -51,7 +51,7 @@ public class MiddleEarthAppMenu {
 			System.out.println("Character addition successful!\n");
 		}
 		else {
-			System.out.println("Error adding new character.\n");
+			System.out.println("Error adding new character\n");
 		}
 			
 	}
@@ -74,7 +74,7 @@ public class MiddleEarthAppMenu {
 			System.out.println("Update successful!\n");
 		}
 		else {
-			System.out.println("Error: no updates made or character not found.\n");
+			System.out.println("Error: no updates or character not found\n");
 		}
 
 	}
@@ -89,16 +89,18 @@ public class MiddleEarthAppMenu {
 			System.out.println("Deletion successful!\n");
 		}
 		else {
-			System.out.println("Error deleting character.\n");
+			System.out.println("Error deleting character\n");
 		}
 		
 	}
 	
 	public static void attackChar() {
 		
+		// If function wants to every character to attack every other character, use this
+		
 		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 		
-		System.out.println("Starting attack sequence...");
+		System.out.println("Starting attack sequence...\n");
 		
 		for(int i = 0; i < council.getCharacterManager().size; i++) {
 			for(int j = 0; j < council.getCharacterManager().size; j++) {
@@ -115,12 +117,27 @@ public class MiddleEarthAppMenu {
 			}
 		}
 		
-		System.out.println("Attack sequence completed. Remaining characters:");
+		System.out.println("\nAttack sequence completed. Remaining characters:\n");
 		council.getCharacterManager().displayAllCharacters();
+		
+		
+		// If the function instead takes an attacker and target parameters, use this
+		
+		/*
+		
+		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
+		
+		council.getCharacterManager().getCharacter(attacker).attack(council.getCharacterManager().getCharacter(target));
+		
+		if(council.getCharacterManager().getCharacter(target).getHealth() <= 0) {
+			System.out.println(target + " was killed by " + attacker);
+			council.getCharacterManager().deleteCharacter(council.getCharacterManager().getCharacter(target));
+		}
+		*/
 		
 	}
 	
 	public static void exit() {
-		System.out.println("Exiting simulation...");
+		System.out.println("\nExiting simulation...");
 	}
 }
