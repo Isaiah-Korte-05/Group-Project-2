@@ -10,11 +10,11 @@ public class Human extends MiddleEarthCharacter{
 
 	@Override
 	public boolean attack(MiddleEarthCharacter target) {
-		if (target.getRace() == "Wizard") {
+		if (target.getRace().equals("Wizard")) {
 			target.setHealth(target.getHealth() - (this.power * 1.5));
 			return true;
 		}
-		else if (target.getRace() == "Orc" || target.getRace() == "Human") {
+		else if (target.getRace().equals("Orc") || target.getRace().equals("Human")) {
 			return false;
 		}
 		else {

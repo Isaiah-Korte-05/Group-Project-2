@@ -10,11 +10,11 @@ public class Wizard extends MiddleEarthCharacter{
 
 	@Override
 	public boolean attack(MiddleEarthCharacter target) {
-		if (target.getRace() == "Dwarf") {
+		if (target.getRace().equals("Dwarf")) {
 			target.setHealth(target.getHealth() - (this.power * 1.5));
 			return true;
 		}
-		else if (target.getRace() == "Human" || target.getRace() == "Wizard") {
+		else if (target.getRace().equals("Human") || target.getRace().equals("Wizard")) {
 			return false;
 		}
 		else {
