@@ -5,6 +5,9 @@ import middleEarth.character.subtypes.*;
 
 public class MiddleEarthAppMenu {
 
+	/**
+	 * This prints all the menu options to console.
+	 */
 	public static void printOptions() {
 		System.out.println("Please select which option you would like to take:\n");
 		System.out.println("[1] Add a new character.");
@@ -16,13 +19,23 @@ public class MiddleEarthAppMenu {
 		System.out.println();
 	}
 	
-	public static void addNewChar(String race, String name, long health, long power) {
+	/**
+	 * This creates a new Middle Earth Character using parameters and adds it to Character Manager.
+	 * 
+	 * @param race This parameter takes a string for the Character race.
+	 * @param name This parameter takes a string for the Character name.
+	 * @param health This parameter takes a double for the Character health.
+	 * @param power This parameter takes a double for the Character power.
+	 */
+	public static void addNewChar(String race, String name, double health, double power) {
 		
+		// Gets sole instance of Council
 		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 			
 		System.out.println("Adding new character...");
 		boolean addSuccess = false;
-			
+		
+		// Determines which constructor to use based on race parameter
 		switch(race.toLowerCase()) {
 			
 		case "dwarf":
@@ -46,7 +59,8 @@ public class MiddleEarthAppMenu {
 			break;
 			
 		}
-			
+		
+		// Prints success/failure message to console
 		if(addSuccess) {
 			System.out.println("Character addition successful!\n");
 		}
@@ -56,20 +70,35 @@ public class MiddleEarthAppMenu {
 			
 	}
 	
+	/**
+	 * This prints all Characters to console.
+	 */
 	public static void viewCharacters() {
 		
+		// Gets sole instance of Council
 		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
+		// Calls display method from Character Manager
 		council.getCharacterManager().displayAllCharacters();
 		System.out.println();
 	
 	}
 	
+	/**
+	 * This takes Character parameters and attempts to update Character.
+	 * This responds accordingly based on update success/failure.
+	 * 
+	 * @param name This parameter takes a string for the name of Character to update.
+	 * @param health This parameter takes a double for Character health to update.
+	 * @param power This parameter takes a double for Character power to update.
+	 */
 	public static void updateChar(String name, double health, double power) {
-			
+		
+		// Gets sole instance of Council
 		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 					
 		System.out.println("Updating character...");
 			
+		// Calls update method from Character Manager with parameter and tests success/failure
 		if(council.getCharacterManager().updateCharacter(council.getCharacterManager().getCharacter(name), name, health, power)) {
 			System.out.println("Update successful!\n");
 		}
@@ -79,12 +108,19 @@ public class MiddleEarthAppMenu {
 
 	}
 	
+	/**
+	 * This takes string and deletes Character from Character Manager.
+	 * 
+	 * @param name This parameter takes a string for the name of Character to delete.
+	 */
 	public static void deleteChar(String name) {
 		
+		// Gets sole instance of Council
 		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 		
 		System.out.println("Deleting character...");
 			
+		// Calls deletion method from Character Manager using parameter and tests success/failure
 		if(council.getCharacterManager().deleteCharacter(council.getCharacterManager().getCharacter(name))) {
 			System.out.println("Deletion successful!\n");
 		}
@@ -94,6 +130,7 @@ public class MiddleEarthAppMenu {
 		
 	}
 	
+	// TODO javadoc after deciding how to do this...
 	public static void attackChar() {
 		
 		// If function wants to every character to attack every other character, use this
@@ -137,6 +174,9 @@ public class MiddleEarthAppMenu {
 		
 	}
 	
+	/**
+	 * This prints exit message to console.
+	 */
 	public static void exit() {
 		System.out.println("\nExiting simulation...");
 	}
