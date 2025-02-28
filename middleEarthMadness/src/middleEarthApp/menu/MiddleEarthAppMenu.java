@@ -130,19 +130,23 @@ public class MiddleEarthAppMenu {
 		
 	}
 	
-	// TODO javadoc after deciding how to do this...
-	public static void attackChar() {
+	/**
+	 * This runs attack sequence where all characters attack each other.
+	 */
+	public static void attackAllChar() {
 		
-		// If function wants to every character to attack every other character, use this
-		
+		// Gets sole instance of Council
 		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
 		
 		System.out.println("Starting attack sequence...\n");
 		
+		// Iterates through character list to select Character to initiate attack
 		for(int i = 0; i < council.getCharacterManager().size; i++) {
+			// Iterates through character list to select Character to attack
 			for(int j = 0; j < council.getCharacterManager().size; j++) {
-				
+				// Character i attacks Character j using appropriate attack methods
 				council.getCharacterManager().characters[i].attack(council.getCharacterManager().characters[j]);
+				// Checks if Character j was killed, then removes them from character list
 				if(council.getCharacterManager().characters[j].getHealth() <= 0) {
 					
 					System.out.println(council.getCharacterManager().characters[j].getName() + " was killed by " + 
@@ -154,23 +158,9 @@ public class MiddleEarthAppMenu {
 			}
 		}
 		
+		// Displays surviving characters after attack sequence
 		System.out.println("\nAttack sequence completed. Remaining characters:\n");
 		council.getCharacterManager().displayAllCharacters();
-		
-		
-		// If the function instead takes an attacker and target parameters, use this
-		
-		/*
-		
-		MiddleEarthCouncil council = MiddleEarthCouncil.getInstance();
-		
-		council.getCharacterManager().getCharacter(attacker).attack(council.getCharacterManager().getCharacter(target));
-		
-		if(council.getCharacterManager().getCharacter(target).getHealth() <= 0) {
-			System.out.println(target + " was killed by " + attacker);
-			council.getCharacterManager().deleteCharacter(council.getCharacterManager().getCharacter(target));
-		}
-		*/
 		
 	}
 	
