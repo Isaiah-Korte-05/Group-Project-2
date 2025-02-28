@@ -11,13 +11,9 @@ public class MiddleEarthApp {
 		// Prints menu options
 		MiddleEarthAppMenu.printOptions();
 		
-		// Adds characterOne
+		// Adds characters One through Three
 		MiddleEarthAppMenu.addNewChar("human", "Boromir", 14, 2);
-		
-		// Adds characterTwo
 		MiddleEarthAppMenu.addNewChar("elf", "Legolas", 31, 10);
-		
-		// Adds characterThree
 		MiddleEarthAppMenu.addNewChar("human", "Aragorn", 38, 5);
 		
 		// Prints all characters
@@ -35,14 +31,17 @@ public class MiddleEarthApp {
 		// Deletes character
 		MiddleEarthAppMenu.deleteChar("Gimli");
 				
-		// Adds characterFive
+		// Adds characters Five through Eight
 		MiddleEarthAppMenu.addNewChar("orc", "Azog", 12, 8);
+		MiddleEarthAppMenu.addNewChar("wizard", "Gandalf", 26, 7);
+		MiddleEarthAppMenu.addNewChar("dwarf", "Gloin", 17, 4);
+		MiddleEarthAppMenu.addNewChar("elf", "Elrond", 11, 8);
 		
 		// Prints all characters
 		MiddleEarthAppMenu.viewCharacters();
 		
 		// Initiates attack sequence
-		MiddleEarthAppMenu.attackChar();
+		MiddleEarthAppMenu.attackAllChar();
 		
 		// Exits simulation
 		MiddleEarthAppMenu.exit();
